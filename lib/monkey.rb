@@ -25,7 +25,7 @@ class String
       end
 
     rescue Encoding::UndefinedConversionError => e
-      str = self.chars.map{|c|
+      str = self.chars.map { |c|
         begin
           c.encode("UTF-8", :invalid => :replace, :undef => :replace)
         rescue

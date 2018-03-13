@@ -382,7 +382,7 @@ class Comment < ActiveRecord::Base
       self.short_id,
       self.is_from_email ? "email" : nil,
       created_at.to_i
-    ].reject{|p| !p }.join(".") << "@" << Rails.application.domain
+    ].reject { |p| !p }.join(".") << "@" << Rails.application.domain
   end
 
   def path
@@ -449,7 +449,7 @@ class Comment < ActiveRecord::Base
       r_users[v.reason.to_s].push v.user.username
     end
 
-    r_counts.keys.sort.map{|k|
+    r_counts.keys.sort.map { |k|
       if k == ""
         "+#{r_counts[k]}"
       else
