@@ -112,8 +112,8 @@ class Story < ActiveRecord::Base
 
   # returns a story or nil
   def self.find_similar_by_url(url)
-    urls = [ url.to_s ]
-    urls2 = [ url.to_s ]
+    urls = [url.to_s]
+    urls2 = [url.to_s]
 
     # https
     urls.each do |u|
@@ -245,7 +245,7 @@ class Story < ActiveRecord::Base
     end
 
     # don't immediately kill stories at 0 by bumping up score by one
-    order = Math.log([ (score + 1).abs + cpoints, 1 ].max, 10)
+    order = Math.log([(score + 1).abs + cpoints, 1].max, 10)
     if score > 0
       sign = 1
     elsif score < 0
@@ -517,7 +517,7 @@ class Story < ActiveRecord::Base
   def merged_comments
     # TODO: make this a normal has_many?
     Comment.where(:story_id => Story.select(:id)
-      .where(:merged_story_id => self.id) + [ self.id ])
+      .where(:merged_story_id => self.id) + [self.id])
   end
 
   def merge_story_short_id=(sid)
@@ -563,7 +563,7 @@ class Story < ActiveRecord::Base
     if old_tags_a == new_tags_a
       {}
     else
-      { "tags" => [ old_tags_a, new_tags_a ] }
+      { "tags" => [old_tags_a, new_tags_a] }
     end
   end
 
@@ -699,7 +699,7 @@ class Story < ActiveRecord::Base
          .parameterize
          .gsub(/[^a-z0-9]/, "_")
          .split("_")
-         .reject { |z| [ "", "a", "an", "and", "but", "in", "of", "or", "that", "the", "to" ] .include?(z) }
+         .reject { |z| ["", "a", "an", "and", "but", "in", "of", "or", "that", "the", "to"] .include?(z) }
          .each do |w|
       if wl + w.length <= max_len
         words.push w

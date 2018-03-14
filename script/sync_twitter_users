@@ -20,7 +20,7 @@ list_id = our_list["id_str"]
 # fetch its member list
 res = Twitter.oauth_request("/1.1/lists/members.json?list_id=#{list_id}" <<
   "&count=5000&skip_status=true", :get)
-their_users = res["users"].map { |u| [ u["screen_name"].downcase, true ] }.to_h
+their_users = res["users"].map { |u| [u["screen_name"].downcase, true] }.to_h
 
 if their_users.empty?
   raise "Intemittent Twitter bug: they said the list is empty when it's not"
@@ -32,7 +32,7 @@ end
 # fetch our active users that have a linked twitter account
 our_users = User.active.where("settings LIKE '%twitter_username:%'")
   .select { |u| u.twitter_username.present? }
-  .map { |u| [ u.twitter_username.downcase, true ] }.to_h
+  .map { |u| [u.twitter_username.downcase, true] }.to_h
 
 # ignore users that have previously been determined to have protected accounts,
 # which cannot be added to a public list

@@ -30,7 +30,7 @@ class Search
   end
 
   def to_url_params
-    [ :q, :what, :order ].map { |p| "#{p}=#{CGI.escape(self.send(p).to_s)}"
+    [:q, :what, :order].map { |p| "#{p}=#{CGI.escape(self.send(p).to_s)}"
       }.join("&amp;")
   end
 
