@@ -137,7 +137,7 @@ class Sponge
     end
 
     if BAD_NETS.select { |n| IPAddr.new(n).include?(ip) }.any?
-      raise "refusing to talk to IP #{ip.to_s}"
+      raise "refusing to talk to IP #{ip}"
     end
 
     host = Net::HTTP.new(ip.to_s, uri.port)
@@ -176,7 +176,7 @@ class Sponge
 
     path.gsub!(/^\/\//, "/")
 
-    dputs "fetching #{url} (#{ip.to_s}) " +
+    dputs "fetching #{url} (#{ip}) " +
           (uri.user ? "with http auth " + uri.user + "/" + ("*" * uri.password.length) + " " : "") +
           "by #{method} with cookies #{cookies(uri.host)}"
 
