@@ -128,8 +128,7 @@ class Comment < ActiveRecord::Base
       :score,
       :upvotes,
       :downvotes,
-      { :comment => (self.is_gone? ? "<em>#{self.gone_text}</em>" :
-        :markeddown_comment) },
+      { :comment => (self.is_gone? ? "<em>#{self.gone_text}</em>" : :markeddown_comment) },
       :url,
       :indent_level,
       { :commenting_user => :user },
@@ -381,7 +380,7 @@ class Comment < ActiveRecord::Base
       "comment",
       self.short_id,
       self.is_from_email ? "email" : nil,
-      created_at.to_i
+      created_at.to_i,
     ].reject { |p| !p }.join(".") << "@" << Rails.application.domain
   end
 
