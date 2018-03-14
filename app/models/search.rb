@@ -60,7 +60,7 @@ class Search
     # extract domain query since it must be done separately
     domain = nil
     words = self.q.to_s.split(" ").reject { |w|
-      if m = w.match(/^domain:(.+)$/)
+      if (m = w.match(/^domain:(.+)$/))
         domain = m[1]
       end
     }.join(" ")
