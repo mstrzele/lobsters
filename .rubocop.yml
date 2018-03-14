@@ -63,6 +63,8 @@ Style/RedundantReturn:
   Enabled: false
 Style/RedundantSelf:
   Enabled: false
+Style/LineEndConcatenation:
+  Enabled: false
 Style/StringLiterals:
   Enabled: false
 Style/TrailingCommaInLiteral:
